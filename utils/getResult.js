@@ -28,10 +28,14 @@ const getRes = {
                 }
             }
             else if (i >= 26 && i < 30) {
-                if (select1[i] == '0') score += 5
+                if (select1[i] == 'B') score += 5
             }
             else if (i >= 30 && i < 34) {
-                score += Number(select1[i])
+                if (select1[i] == 'A') score += 1
+                else if (select1[i] == 'B') score += 2
+                else if (select1[i] == 'C') score += 3 
+                else if (select1[i] == 'D') score += 4
+                else if (select1[i] == 'E') score += 5
             }
         }
         if (score < 90) result1 = 'EQ较低'
@@ -118,6 +122,7 @@ const getRes = {
             'C':3,
             'D':4,
         }
+        console.log(select2)
         for (let i of arr) {
             score += state[select2[i]]
         }

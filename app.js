@@ -2,7 +2,7 @@
  * @Author: sunsan 2390864551@qq.com
  * @Date: 2023-11-26 16:35:16
  * @LastEditors: sunsan 2390864551@qq.com
- * @LastEditTime: 2023-12-25 19:46:02
+ * @LastEditTime: 2023-12-31 17:05:52
  * @FilePath: \express-demo\app.js
  * @Description: app.js
  */
@@ -34,6 +34,8 @@ app.use(express.urlencoded({ extended: true }));
  // 自定义错误处理中间件
  app.use((err, req, res, next) => {
      if (err.name === 'UnauthorizedError') {
+        const token = req.headers.authorization.split(" ")[1];
+        console.log("Received Token:", token);
          console.log('UnauthorizedError:', err.message);
          return res.send({ message: '身份认证失败' });
      }

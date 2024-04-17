@@ -2,7 +2,7 @@
  * @Author: sunsan 2390864551@qq.com
  * @Date: 2023-11-27 21:29:23
  * @LastEditors: sunsan 2390864551@qq.com
- * @LastEditTime: 2023-12-27 15:34:35
+ * @LastEditTime: 2024-01-03 00:14:38
  * @FilePath: \express-demo\service\user.js
  * @Description: 用户的数据持久化操作
  */
@@ -24,6 +24,7 @@ const userService = {
         const user = await db(sql, id)
         return res.send(Result.success(user))
     },
+
     //添加用户信息
     addUser: async (req, res) => {
         const user = req.user
@@ -93,7 +94,7 @@ const userService = {
                 if (result1 && result2 && result3 && result4) {
                     await db(update_sql, [result1, result2, result3, result4, user.id]);
                 } else {
-                    throw new Error(`${user.id}用户数据错误`);
+                    throw new Error(`${user.id}用户数据错误+${select1.length} +${select2.length} +${select3.length} +${select4.length} `);
                 }
             });
     
